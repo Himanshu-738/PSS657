@@ -1,0 +1,8 @@
+EnvDetected	EnvConf	DeclaredEnv	Decision
+home	0.8	home	Review Needed
+			
+Item	DetectedCount	DeclaredCount	AvgConf
+bed	4		0.51
+sofa	1		0.43
+bottles	59		0.61
+chair	7		0.42
