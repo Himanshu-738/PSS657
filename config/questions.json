@@ -1,0 +1,52 @@
+{
+  "flow_sequence": [
+    "document_upload",
+    "personal_details",
+    "otp",
+    "photo_capture",
+    "other_details",
+    "verifications"
+  ],
+
+  "document_upload": [
+    {
+      "id": "id_proof",
+      "text": "Please upload an ID document (Aadhaar/PAN). Enter local file path (e.g., C:\\\\temp\\\\sample_id.png):",
+      "type": "document",
+      "required": true,
+      "returns": ["full_name", "dob", "id_number"]
+    }
+  ],
+
+  "personal_details": [
+    {"id": "full_name", "text": "Can I have your full name as per your official documents?", "type": "text", "required": true},
+    {"id": "dob", "text": "What is your date of birth? (DD-MM-YYYY)", "type": "date", "required": true, "format_hints": "DD-MM-YYYY"},
+    {"id": "gender", "text": "Gender?", "type": "choice", "options": ["Male", "Female", "Other"], "required": true},
+    {"id": "mobile", "text": "Which mobile number should we use to contact you? (10 digits)", "type": "phone", "required": true},
+    {"id": "email", "text": "And your email address?", "type": "email", "required": false}
+  ],
+
+  "photo_capture": [
+    {
+      "id": "selfie",
+      "text": "Please provide path to a selfie image for liveness check (e.g., C:\\\\temp\\\\selfie.jpg):",
+      "type": "photo",
+      "required": true
+    }
+  ],
+
+  "other_details": [
+    {"id": "current_address", "text": "What’s your current residential address?", "type": "text", "required": true},
+    {"id": "res_status", "text": "Is this owned, rented, or provided by your employer?", "type": "choice", "options": ["Owned", "Rented", "Employer Provided"], "required": true, "map": "res_status_id"},
+    {"id": "res_duration_years", "text": "How long have you been staying here? (years)", "type": "number", "required": false},
+    {"id": "permanent_address", "text": "Do you have a different permanent address? If yes, enter it. Otherwise press Enter.", "type": "text", "required": false},
+    {"id": "monthly_income", "text": "What’s your monthly net income after deductions? (numbers only)", "type": "number", "required": true},
+    {"id": "bank_name", "text": "Which bank should we use for loan disbursement? (Bank name & branch)", "type": "text", "required": true},
+    {"id": "account_no", "text": "Can you confirm the account number?", "type": "text", "required": true, "validation": {"type": "regex", "pattern": "^[0-9]{9,18}$"}},
+    {"id": "ifsc", "text": "Please provide the IFSC code:", "type": "text", "required": true, "validation": {"type": "regex", "pattern": "^[A-Z]{4}0[A-Z0-9]{6}$"}}
+  ],
+
+  "verifications": [
+    {"id": "consent", "text": "Do you consent to sharing your data for verification? (yes/no)", "type": "choice", "options": ["yes", "no"], "required": true}
+  ]
+}
